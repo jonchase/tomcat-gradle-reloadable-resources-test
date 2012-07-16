@@ -1,0 +1,29 @@
+// This script configures the Tomcat plugin
+// https://github.com/bmuschko/gradle-tomcat-plugin
+// This script is called using "apply from '../tomcat.gradle'" in 
+// build scripts (see cedexis_portal/build.gradle for an example).
+
+// Some other set is up also required - see the mention of "tomcat" in build.gradle as well.
+
+apply plugin: 'tomcat'
+
+configurations {
+    tomcat
+}
+
+dependencies {
+    def tomcatVersion = '7.0.29'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+        "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
+    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
+        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
+    }
+
+    // ensure files like jsp-api and servlet.jar are not included in Tomcat's classpath,
+    // otherwise you'll see all sorts of ClassCastExceptions
+    providedCompile configurations.tomcatLibs
+}
+
+tomcatRun {
+    contextPath = '/'
+}
