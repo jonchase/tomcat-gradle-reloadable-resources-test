@@ -5,7 +5,7 @@ Test for https://github.com/bmuschko/gradle-tomcat-plugin/issues/29#issuecomment
 
 ```
 cd webmodule1
-gradle tomcatRun
+../gradlew tomcatRun
 
 http://localhost:8080/index.jsp    <-- comes from webmodule1
 http://localhost:8080/module1.jsp  <-- comes from module1

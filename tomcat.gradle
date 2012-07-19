@@ -7,10 +7,6 @@
 
 apply plugin: 'tomcat'
 
-configurations {
-    tomcat
-}
-
 dependencies {
     def tomcatVersion = '7.0.29'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
