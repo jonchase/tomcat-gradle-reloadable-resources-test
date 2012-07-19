@@ -55,3 +55,7 @@ subprojects {
     // completely overwrite existing Eclipse files
     tasks.eclipse.dependsOn(cleanEclipse)
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+}
