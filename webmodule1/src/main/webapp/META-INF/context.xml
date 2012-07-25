@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>    
 <Context path="/" docBase="/Users/jon/Projects/tomcat-gradle-reloadable-resources-test/webmodule1/src/main/webapp">
+    <!--
     <Resources className="org.apache.naming.resources.VirtualDirContext"
         extraResourcePaths="/=/Users/jon/Projects/tomcat-gradle-reloadable-resources-test/module1/src/main/resources/META-INF/resources"
     />
-
-    <!--
-    
-    Causes java.lang.ClassNotFoundException: org.apache.jasper.servlet.JspServlet:
-    
-    <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
-        virtualClasspath="/Users/jon/Projects/tomcat-gradle-reloadable-resources-test/module1/src/main/resources;" 
-    />
     -->
+
+    <Loader className="org.apache.catalina.loader.VirtualWebappLoader"
+        virtualClasspath="/Users/jon/Projects/tomcat-gradle-reloadable-resources-test/module1/src/main/resources;
+    />
 
     <!--
             Additional entries to virtualClasspath
             
-            Adding these to virtualClasspath gets rid of the CNFE, but causes a ClassCastException on Servlet
-            
-            
+            Adding these to virtualClasspath gets rid of the CNFE, but causes:
+            java.lang.ClassCastException: org.apache.jasper.servlet.JspServlet cannot be cast to javax.servlet.Servlet
+
             /Users/jon/.gradle/caches/artifacts-13/filestore/org.apache.tomcat.embed/tomcat-embed-jasper/7.0.29/jar/476e969030e3dc96c4f8d4813290507d379ed1f7/tomcat-embed-jasper-7.0.29.jar;
             /Users/jon/.gradle/caches/artifacts-13/filestore/org.apache.tomcat.embed/tomcat-embed-core/7.0.29/jar/3191851cc9989f274aba2528a7bcdf911f8bb9a1/tomcat-embed-core-7.0.29.jar;
-            /Users/jon/.gradle/caches/artifacts-13/filestore/org.apache.tomcat.embed/tomcat-embed-logging-juli/7.0.29/jar/fc20d8637ffdd54a60f32035524cce13dd5fd6dc/tomcat-embed-logging-juli-7.0.29.jar
+            /Users/jon/.gradle/caches/artifacts-13/filestore/org.apache.tomcat.embed/tomcat-embed-logging-juli/7.0.29/jar/fc20d8637ffdd54a60f32035524cce13dd5fd6dc/tomcat-embed-logging-juli-7.0.29.jar" 
     -->
 
     <JarScanner scanAllDirectories="true" />
