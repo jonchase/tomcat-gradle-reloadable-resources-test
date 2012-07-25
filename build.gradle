@@ -1,5 +1,3 @@
-description = 'Parent project for all Cedexis Java apps'
-
 buildscript {
     repositories {
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {
